@@ -12,7 +12,7 @@ class base {
 	/**
 	 * 构造函数
 	 */
-	private function __construct(){
+	protected function __construct(){
 		$this->init();
 	}
 
@@ -46,7 +46,7 @@ class base {
 		$base = isset($_GET['m']) ? htmlspecialchars($_GET['m']) : 'index';
 		$c = isset($_GET['c']) ? htmlspecialchars($_GET['c']) : 'index';
 		$m = basename(PATH . '/base/' . $base);
-		if($m && $m != 'base'){
+		if($m){
 			$file = PATH . '/controller/' . $m . '.class.php';
 			if(file_exists($file)){
 				include  $file;
@@ -66,17 +66,29 @@ class base {
 			
 	}
 
-
-	protected function dolog($data=''){
+	/**
+	 * 日志函数
+	 * @param unknown_type $data
+	 */
+	protected function dolog($data='', $path=''){
 		if($data){
+			if(!$path){
+				$path = PATH . '/logs/' . date("Ymd") . '.txt';
+			}
 			if(is_string($data)){
-				file_put_contents(PATH . '/logs/' . date("Ymd") . '.txt', $data . "\n",FILE_APPEND);
+				file_put_contents($path, $data . "\n", FILE_APPEND);
 			}else{
-				file_put_contents(PATH . '/logs/' . date("Ymd") . '.txt' , json_encode($data) . "\n",FILE_APPEND);
+				file_put_contents($path, json_encode($data) . "\n", FILE_APPEND);
 			}
 		}
 	}
 
+	/**
+	 * 
+	 * curl get
+	 * @param unknown_type $url
+	 * @return mixed
+	 */
 	protected function get($url){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -92,7 +104,7 @@ class base {
 	 * call 魔术方法
 	 */
 	public function __call($name, $args){
-		echo json_encode(array('code'=>4,'msg'=>'参数错误'));
+		echo json_encode(array('code'=>1,'msg'=>'参数错误'));
 	}
 
 
