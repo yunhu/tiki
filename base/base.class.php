@@ -28,7 +28,7 @@ class base {
 		 * @var unknown_type
 		 */
 		$needtoinclude = array(
-				PATH . '/lib/mysql/mysql.php',
+				PATH . '/lib/smarty/libs/Smarty.class.php',
 				PATH . '/lib/mysql/mysql.php',
 		);
 		foreach($needtoinclude as $val){
