@@ -29,7 +29,7 @@ class base {
 		 */
 		$needtoinclude = array(
 				PATH . '/lib/mysql/mysql.php',
-				PATH . '/lib/mysql/mysql.php',
+				PATH . '/lib/mysql/master.php',
 		);
 		foreach($needtoinclude as $val){
 			if(file_exists($val))include $val;
