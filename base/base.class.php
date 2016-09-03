@@ -30,6 +30,7 @@ class base {
 		$needtoinclude = array(
 				PATH . '/lib/mysql/mysql.php',
 				PATH . '/lib/mysql/live.php',
+				PATH . '/lib/mysql/live2.php',
 		);
 		foreach($needtoinclude as $val){
 			if(file_exists($val))include $val;
