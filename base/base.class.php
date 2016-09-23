@@ -45,7 +45,7 @@ class base {
 	public static function run(){
 		$base = isset($_GET['m']) ? htmlspecialchars($_GET['m']) : 'index';
 		$c = isset($_GET['c']) ? htmlspecialchars($_GET['c']) : 'index';
-		$m = basename(PATH . '/base/' . $base);
+		$m = ucfirst(basename(PATH . '/base/' . $base));
 		if($m){
 			$file = PATH . '/controller/' . $m . '.class.php';
 			if(file_exists($file)){
