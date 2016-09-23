@@ -47,7 +47,7 @@ class base {
 	public static function run(){
 		$base = isset($_GET['m']) ? htmlspecialchars($_GET['m']) : 'index';
 		$c = isset($_GET['c']) ? htmlspecialchars($_GET['c']) : 'index';
-		$m = basename(PATH . '/base/' . $base);
+		$m = ucfirst(basename(PATH . '/base/' . $base));
 		if($m){
 			$file = PATH . '/controller/' . $m . '.class.php';
 			if(file_exists($file)){
@@ -60,10 +60,10 @@ class base {
 					$controller = new $m();
 				}
 			}else{
-				echo json_encode(array('code'=>2, 'msg'=>'参数错误'));
+				echo json_encode(array('code'=>1, 'msg'=>'参数错误'));
 			}
 		}else{
-			echo json_encode(array('code'=>3, 'msg'=>'参数错误'));
+			echo json_encode(array('code'=>1, 'msg'=>'参数错误'));
 		}
 			
 	}
