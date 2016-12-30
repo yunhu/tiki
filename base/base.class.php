@@ -27,6 +27,8 @@ class base {
 		 * 写的时候注意点，这里没有文件不会加载，不会提示会
 		 * @var unknown_type
 		 */
+
+		/*
 		$needtoinclude = array(
 				PATH . '/lib/mysql/mysql.php',
 				PATH . '/lib/mysql/master.php',
@@ -36,6 +38,7 @@ class base {
 		foreach($needtoinclude as $val){
 			if(file_exists($val))include $val;
 		}
+		*/
 
 		$this->config = include PATH . '/config/config.php';
 
