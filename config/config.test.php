@@ -7,5 +7,8 @@ return array(
 				'port'=>6379,
 				'pass'=>''
 			),
+	'mysql'=>array(
+				
+			),
 
 );

@@ -28,8 +28,11 @@ class base {
 		 * @var unknown_type
 		 */
 		$needtoinclude = array(
-				PATH . '/lib/smarty/libs/Smarty.class.php',
-				PATH . '/lib/mysql/mysql.php',
+				PATH . '/base/baseModel.class.php',
+				PATH . '/lib/mysql/Db.class.php',
+				PATH . '/lib/mysql/Log.class.php',
+				PATH . '/common/common.php',
+				
 		);
 		foreach($needtoinclude as $val){
 			if(file_exists($val))include $val;
@@ -73,7 +76,7 @@ class base {
 	protected function dolog($data='', $path=''){
 		if($data){
 			if(!$path){
-				$path = PATH . '/logs/' . date("Ymd") . '.txt';
+				$path = PATH . '/logs/app/' . date("Ymd") . '.txt';
 			}
 			if(is_string($data)){
 				file_put_contents($path, $data . "\n", FILE_APPEND);
@@ -98,6 +101,9 @@ class base {
 		curl_close($ch);
 		return $return;
 	}
+	
+	
+	
 
 
 	/**
