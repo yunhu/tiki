@@ -1,4 +1,5 @@
 <?php
+namespace Tiki;
 if(!defined('PATH'))exit();
 class base {
 
@@ -88,12 +89,11 @@ class base {
 		}
 	}
 
-	/**
-	 * 
-	 * curl get
-	 * @param unknown_type $url
-	 * @return mixed
-	 */
+    /**
+     * @param $url
+     * @return mixed
+     *
+     */
 	protected function get($url){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
