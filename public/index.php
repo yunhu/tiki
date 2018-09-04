@@ -1,16 +1,14 @@
 <?php
-/**
- * demo:
- * http://www.test.com/?m=invote&c=fetch
- * 如果jsonp的话
- * http://www.test.com/?m=invote&c=fetch&cb=jquery1213123214
- * 
- * @var unknown_type
- */
+// +----------------------------------------------------------------------
+// | Tiki [ EASY TO USE IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006~2018 All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: liozen <zyhfrozen@gmail.com>
+// +----------------------------------------------------------------------
 
 
-
-define('PATH', __DIR__);
-include PATH . '/base/base.class.php';
-##test2
+require __DIR__ . '/../base/base.class.php';
 base::run();

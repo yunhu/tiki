@@ -1,5 +1,8 @@
 {
+    "name":"yunhu/tiki",
     "require": {
-        "catfan/medoo": "^1.5"
+        "catfan/medoo": "^1.5",
+        "monolog/monolog": "^1.23"
+
     }
 }

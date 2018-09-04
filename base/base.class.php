@@ -1,5 +1,7 @@
 <?php
 namespace Tiki;
+
+
 if(!defined('PATH'))exit();
 class base {
 
@@ -14,6 +16,7 @@ class base {
 	 * 构造函数
 	 */
 	protected function __construct(){
+	    require PATH .'/vendor/autoload.php';
 		$this->init();
 	}
 
@@ -28,19 +31,6 @@ class base {
 		 * 写的时候注意点，这里没有文件不会加载，不会提示会
 		 * @var unknown_type
 		 */
-
-		/*
-		$needtoinclude = array(
-				PATH . '/lib/mysql/mysql.php',
-				PATH . '/lib/mysql/master.php',
-				PATH . '/lib/mysql/live.php',
-				PATH . '/lib/mysql/live2.php',
-		);
-		foreach($needtoinclude as $val){
-			if(file_exists($val))include $val;
-		}
-		*/
-
 		$this->config = include PATH . '/config/config.php';
 
 	}
@@ -89,20 +79,6 @@ class base {
 		}
 	}
 
-    /**
-     * @param $url
-     * @return mixed
-     *
-     */
-	protected function get($url){
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		$return = curl_exec($ch);
-		curl_close($ch);
-		return $return;
-	}
 
 
 	/**
