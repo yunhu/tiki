@@ -6,10 +6,10 @@
  * Time: 下午6:02
  */
 
-namespace Tiki;
+namespace Tiki\Controller;
 
 
-class controller extends base
+class Controller extends \Tiki\base
 {
 
 }

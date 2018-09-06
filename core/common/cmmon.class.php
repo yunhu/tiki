@@ -8,7 +8,8 @@
 // +----------------------------------------------------------------------
 // | Author: liozen <zyhfrozen@gmail.com>
 // +----------------------------------------------------------------------
-namespace Tiki;
-define(PATH ,__DIR__ .'/../');
-require PATH .'/core/base.class.php';
-base::run();
+
+class cmmon
+{
+
+}

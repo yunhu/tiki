@@ -9,7 +9,7 @@
 namespace Tiki;
 use Medoo\Medoo;
 
-class model extends base
+class Model extends base
 {
 
     public static $_medoo = null;
