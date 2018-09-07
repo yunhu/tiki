@@ -10,9 +10,9 @@ class base
     private $callback = '';
 
     //配置文件参数
-    public static $config = '';
+    public static $__config = '';
 
-    public static $modelHandle = null;
+    public static $__modelHandle = null;
 
     /**
      * 构造函数
@@ -20,6 +20,7 @@ class base
     protected function __construct()
     {
         require PATH . '/vendor/autoload.php';
+        require PATH . '/core/autoload/autoload.class.php';
         $this->init();
     }
 
@@ -29,10 +30,12 @@ class base
     private function init()
     {
         date_default_timezone_set('Asia/Shanghai');
-
+        require PATH . '/base/Model.class.php';
+        require PATH . '/core/common/common.class.php';
+        require PATH . '/common/common.class.php';
         $this->callback = isset($_GET['cb']) ? htmlspecialchars($_GET['cb']) : '';
 
-      //  $this->config = include PATH . '/config/config.php';
+        self::$__config = include PATH . '/config/config.php';
 
     }
 
@@ -47,6 +50,11 @@ class base
         if(isset($uri['path']) && $uri['path']!='/' ) {
             list($_, $con, $method) = explode('/', $uri['path']);
         }
+        //aa.com/fetch?a=c
+        if($con && empty($method)){
+           $method = $con;
+           $con = 'index';
+        }
         $m = ucfirst(basename(PATH . '/base/' . $con));
         if ($m) {
             require PATH .'/base/Controller.class.php';
@@ -57,10 +65,9 @@ class base
                 try{
                     if ($m != $method) {
                           $controller = new $class();
-                     //   $controller = new $m();
-                        $controller->$method();
+                          $controller->$method();
                     } else {
-                        $controller = new $m();
+                           new $m();
                     }
                 }catch (\Exception $e){
                     exit($e->getMessage());

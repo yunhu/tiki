@@ -9,7 +9,11 @@
 namespace Tiki\Controller;
 
 
+
 class Controller extends \Tiki\base
 {
 
+
+    public function index(){
+    }
 }
