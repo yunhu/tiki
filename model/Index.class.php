@@ -7,7 +7,10 @@
  */
 namespace Tiki\Model;
 
-class IndexModel extends Model
+class Index extends Model
 {
 
+    public function fetchIndex(){
+        return ['name'=>'liozen','age'=>1];
+    }
 }

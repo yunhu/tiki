@@ -7,8 +7,10 @@ class Index extends Controller {
 	
 	
 	public function test(){
-	    $data = M()->S('user','*',['User'=>'root']);
-var_dump($data);die;
+	   // $data = M()->S('user','*',['User'=>'root']);
+        $index=M('index')->fetchIndex();
+        var_dump($index);die;
+
 
 	}
 	

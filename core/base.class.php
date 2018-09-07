@@ -36,6 +36,7 @@ class base
         $this->callback = isset($_GET['cb']) ? htmlspecialchars($_GET['cb']) : '';
 
         self::$__config = include PATH . '/config/config.php';
+        spl_autoload_register(__NAMESPACE__.'\\autoload::load');
 
     }
 
