@@ -6,7 +6,7 @@
  * Time: 下午6:03
  */
 
-namespace Tiki;
+namespace Tiki\Model;
 use Medoo\Medoo;
 
 class Model extends \Tiki\base

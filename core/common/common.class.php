@@ -13,6 +13,7 @@
 function M( $model='',$dbConfig='mysql')
 {
 //不传的话，基类
+    $model = ucfirst($model);
     if($model){
         $class = 'Tiki\\Model\\'. $model;
     }else{

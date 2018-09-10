@@ -11,16 +11,16 @@ namespace Tiki;
 
 class autoload
 {
-    public static function load($class){
-       list($_,$pos,$m)  = explode('\\',$class);
+    public static function load($class)
+    {
+        list($_, $pos, $m) = explode('\\', $class);
         $pos = strtolower($pos);
         $m = ucfirst($m);
-        var_dump($pos,$m);
-       $file = PATH .'/'.$pos.'/'.$m .'.class.php';
-       if(file_exists($file)){
-           require  $file;
-       }else{
-           exit($file .'NOT EXISTS!');
-       }
+        $file = PATH . '/' . $pos . '/' . $m . '.class.php';
+        if (file_exists($file)) {
+            require $file;
+        } else {
+            exit($file . 'NOT EXISTS!');
+        }
     }
 }
