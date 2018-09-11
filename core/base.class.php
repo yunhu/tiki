@@ -1,13 +1,12 @@
 <?php
 
 namespace Tiki;
-
-
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 class base
 {
 
-    //jsonp参数
-    private $callback = '';
+
 
     //配置文件参数
     public static $__config = '';
@@ -19,8 +18,6 @@ class base
      */
     protected function __construct()
     {
-        require PATH . '/vendor/autoload.php';
-        require PATH . '/core/autoload/autoload.class.php';
         $this->init();
     }
 
@@ -30,11 +27,11 @@ class base
     private function init()
     {
         date_default_timezone_set('Asia/Shanghai');
+        require PATH . '/vendor/autoload.php';
+        require PATH . '/core/autoload/autoload.class.php';
         require PATH . '/base/Model.class.php';
         require PATH . '/core/common/common.class.php';
         require PATH . '/common/common.class.php';
-        $this->callback = isset($_GET['cb']) ? htmlspecialchars($_GET['cb']) : '';
-
         self::$__config = include PATH . '/config/config.php';
         spl_autoload_register(__NAMESPACE__.'\\autoload::load');
 
@@ -87,17 +84,13 @@ class base
      * 日志函数
      * @param unknown_type $data
      */
-    protected function dolog($data = '', $path = '')
+    protected function dolog($data = '', $path = '',$type = 'warning',$ch='pro')
     {
         if ($data) {
-            if (!$path) {
-                $path = PATH . '/logs/' . date("Ymd") . '.txt';
-            }
-            if (is_string($data)) {
-                file_put_contents($path, $data . "\n", FILE_APPEND);
-            } else {
-                file_put_contents($path, json_encode($data) . "\n", FILE_APPEND);
-            }
+            $log = new Logger($ch);
+            $path = PATH . '/logs/' . date("Ymd") . '.log';
+            $log->pushHandler(new StreamHandler($path, Logger::WARNING));
+            $log->warning($data);
         }
     }
 
@@ -111,19 +104,4 @@ class base
     }
 
 
-    /**
-     * 输出函数
-     * @param unknown_type $code
-     * @param unknown_type $msg
-     * @param unknown_type $data
-     * @param unknown_type $cb
-     */
-    protected function msg($code, $msg, $data = '')
-    {
-        header("Content-Type:application/json; charset=utf-8");
-        $str = json_encode(array('code' => $code, 'msg' => $msg, 'data' => $data));
-        if ($this->callback) echo $this->callback . "($str)";
-        else echo $str;
-        exit();
-    }
 }

@@ -39,3 +39,20 @@ function get($url){
     return $return;
 }
 
+
+
+/**
+ * 输出函数
+ * @param unknown_type $code
+ * @param unknown_type $msg
+ * @param unknown_type $data
+ * @param unknown_type $cb
+ */
+function msg($code, $msg, $data = '',$callback='')
+{
+    header("Content-Type:application/json; charset=utf-8");
+    $str = json_encode(array('code' => $code, 'msg' => $msg, 'data' => $data));
+    if ($callback) echo $callback . "($str)";
+    else echo $str;
+    exit();
+}
