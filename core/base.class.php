@@ -84,13 +84,13 @@ class base
      * 日志函数
      * @param unknown_type $data
      */
-    protected function dolog($data = '', $path = '',$type = 'warning',$ch='pro')
+    protected function log($data = '', $para='',$type = 'warning',$ch='pro',$path='')
     {
         if ($data) {
             $log = new Logger($ch);
             $path = PATH . '/logs/' . date("Ymd") . '.log';
             $log->pushHandler(new StreamHandler($path, Logger::WARNING));
-            $log->warning($data);
+            $log->warning($data,$para);
         }
     }
 
