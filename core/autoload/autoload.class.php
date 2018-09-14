@@ -20,7 +20,7 @@ class autoload
         if (file_exists($file)) {
             require $file;
         } else {
-            exit($file . 'NOT EXISTS!');
+            exit($file . ' NOT EXISTS!');
         }
     }
 }

@@ -10,6 +10,11 @@ Tiki 简单易用，其主要特性包括：
  + 支持monolog
  + db用medoo封装
 
-lightning php framework
-###如果你的系统不区分大小写像mac和windows注意了，方法名与类名相同名时该方法会变成默认构造函数，请先执行父类构造函数
-
+配置文件用软链生成，先进入config里 
+   测试环境 ln -s ./config.test.php config.php
+   线上环境 ln -s ./config.online.php config.php 
+   
+计划任务方式：
+    cd cmd 
+    php c.php index myCrontTest
+    

@@ -8,4 +8,13 @@ return array(
 				'pass'=>''
 			),
 
+    'mysql'=>array(
+        'ip'=>'1.1.1.1',
+        'port'=>3306,
+        'user'=>'root',
+        'pass'=>'1111!',
+        'db'=>'mysql',
+        'pre'=>'',
+    ),
+
 );

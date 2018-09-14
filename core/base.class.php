@@ -42,11 +42,15 @@ class base
      */
     public static function run()
     {
+        if(defined('CRONT')){
+            list($_,$con,$method) = $_SERVER['argv'];
+        }else {
 
-        $uri = parse_url($_SERVER['REQUEST_URI']);
-        $con = $method = 'index';
-        if(isset($uri['path']) && $uri['path']!='/' ) {
-            list($_, $con, $method) = explode('/', $uri['path']);
+            $uri = parse_url($_SERVER['REQUEST_URI']);
+            $con = $method = 'index';
+            if (isset($uri['path']) && $uri['path'] != '/') {
+                list($_, $con, $method) = explode('/', $uri['path']);
+            }
         }
         //aa.com/fetch?a=c
         if($con && empty($method)){

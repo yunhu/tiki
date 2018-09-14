@@ -7,9 +7,9 @@ class Index extends Controller {
 	
 	
 	public function test(){
-	   // $data = M()->S('user','*',['User'=>'root']);
-        $index=M('index')->fetchIndex();
-        var_dump($index);die;
+	    $data = M()->S('user','*',['User'=>'root']);
+        $index= M('index')->fetchIndex();
+        var_dump($index,$data);die;
 	}
 
 	public function index(){
@@ -17,6 +17,13 @@ class Index extends Controller {
         $log = array('name'=>'tiki','value'=>'lizoen');
         $this->log('aasbb',['username'=>'tigera','age'=>333]);
         var_dump($index);die;
+    }
+    public function myCrontTest(){
+	    if(!defined("CRONT")){
+	        exit('error');
+        }
+        $index=M('index')->fetchIndex();
+        var_dump(self::$__config);die;
     }
 	
 }

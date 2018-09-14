@@ -17,7 +17,7 @@ function M( $model='',$dbConfig='mysql')
     if($model){
         $class = 'Tiki\\Model\\'. $model;
     }else{
-        $class = 'Tiki\\Model';
+        $class = 'Tiki\\Model\\Model';
     }
     return  new $class($dbConfig);
 }
