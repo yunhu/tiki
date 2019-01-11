@@ -1,9 +1,15 @@
 {
     "name":"yunhu/tiki",
     "type":"project",
+    "description": "A PHP Framework",
+    "keywords": [
+        "framework"
+    ],
     "require": {
         "catfan/medoo": "^1.5",
         "monolog/monolog": "^1.23"
 
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
