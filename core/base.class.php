@@ -104,8 +104,9 @@ class base
      */
     public function __call($name, $args)
     {
-        echo json_encode(array('code' => 1, 'msg' => '参数错误'));
+        echo json_encode(array('code' => 4, 'msg' => '方法不存在'));
     }
+
 
 
 }
