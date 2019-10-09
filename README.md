@@ -2,7 +2,7 @@
 A PHP Framework
 
 
- ##Tiki 
+ ## Tiki 
 ===============
 
 ### Tiki 简单易用，其主要特性包括：
